@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocQuest</title>
+    <!-- Use Inter font for a premium look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Doc<span class="highlight">Quest</span></h1>
+            <p>Upload your study materials, and get instant, AI-generated questions to test your knowledge.</p>
+        </header>
+
+        <main>
+            <div id="settings-section" class="card settings-card">
+                <h3>Analysis Settings</h3>
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <label for="num-questions">Questions</label>
+                        <select id="num-questions" class="premium-select">
+                            <option value="3">3 Questions</option>
+                            <option value="5" selected>5 Questions</option>
+                            <option value="10">10 Questions</option>
+                            <option value="15">15 Questions</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label for="difficulty">Difficulty</label>
+                        <select id="difficulty" class="premium-select">
+                            <option value="Easy">Easy</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="Hard">Hard</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="upload-section" class="card drop-zone">
+                <div class="icon-container">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                </div>
+                <h3>Drag & Drop your PDF here</h3>
+                <p>or click to browse from your computer</p>
+                <input type="file" id="file-input" accept="application/pdf" hidden>
+            </div>
+
+            <div id="loading-section" class="card hidden">
+                <div class="loader-container">
+                    <div class="loader"></div>
+                </div>
+                <h3>Analyzing your document...</h3>
+                <p>Our AI is extracting text and generating the best study questions for you. This might take a few seconds.</p>
+            </div>
+
+            <div id="results-section" class="hidden">
+                <div class="results-header">
+                    <h2>Generated Study Questions</h2>
+                    <button id="reset-btn" class="btn-secondary">Analyze Another File</button>
+                </div>
+                <div id="topic-container" class="topic-card hidden"></div>
+                <div id="questions-container">
+                    <!-- Questions will be injected here by JS -->
+                </div>
+            </div>
+            
+            <div id="error-message" class="hidden error-card"></div>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
